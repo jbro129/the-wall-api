@@ -9,7 +9,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Get the wall posts
 app.get('/wall', getWallPosts)
+
+// Post to the wall
 app.post('/wall', postToWall)
 
 // app.listen(port, () => {

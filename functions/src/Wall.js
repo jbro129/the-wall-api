@@ -1,6 +1,7 @@
 const admin = require('firebase-admin')
 const secret = require('./secrets.json')
 
+// make sure initialization only happens once.
 function firestore() {
 	if (!admin.apps.length) {
 		admin.initializeApp({
@@ -48,6 +49,7 @@ exports.postToWall = (req, res) => {
 	db.collection('wall')
 		.add(newWallPost)
 		.then(() => {
+			// Post to wall then return json with the new post inside
 			this.getWallPosts(req, res)
 		})
 		.catch((err) =>
